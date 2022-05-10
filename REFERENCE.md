@@ -85,6 +85,7 @@ The following parameters are available in the `letsencrypt` class:
 * [`renew_cron_hour`](#renew_cron_hour)
 * [`renew_cron_minute`](#renew_cron_minute)
 * [`renew_cron_monthday`](#renew_cron_monthday)
+* [`renew_cron_environment`](#renew_cron_environment)
 
 ##### <a name="email"></a>`email`
 
@@ -293,6 +294,15 @@ Optional string, integer or array of monthday(s) the renewal command should
 run. E.g. '2-30/2' to run on even days.
 
 Default value: `'*'`
+
+##### <a name="renew_cron_environment"></a>`renew_cron_environment`
+
+Data type: `Any`
+
+Optional string or array of environments(s) the renewal command should have.
+E.g. PATH=/sbin:/usr/sbin:/bin:/usr/bin
+
+Default value: ``undef``
 
 ### <a name="letsencryptinstall"></a>`letsencrypt::install`
 
@@ -573,6 +583,7 @@ The following parameters are available in the `letsencrypt::renew` class:
 * [`cron_hour`](#cron_hour)
 * [`cron_minute`](#cron_minute)
 * [`cron_monthday`](#cron_monthday)
+* [`cron_environment`](#cron_environment)
 
 ##### <a name="pre_hook_commands"></a>`pre_hook_commands`
 
@@ -645,6 +656,15 @@ Optional string, integer or array of monthday(s) the renewal command should
 run. E.g. '2-30/2' to run on even days. Default: Every day.
 
 Default value: `$letsencrypt::renew_cron_monthday`
+
+##### <a name="cron_environment"></a>`cron_environment`
+
+Data type: `Variant[String, Array[String], Undef]`
+
+Optional string or array of environments(s) the renewal command should have.
+E.g. PATH=/sbin:/usr/sbin:/bin:/usr/bin
+
+Default value: `$letsencrypt::renew_cron_environment`
 
 ## Defined types
 

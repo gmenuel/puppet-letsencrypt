@@ -50,6 +50,9 @@
 # @param renew_cron_monthday
 #   Optional string, integer or array of monthday(s) the renewal command should
 #   run. E.g. '2-30/2' to run on even days.
+# @param renew_cron_environment
+#   Optional string or array of environments(s) the renewal command should have.
+#   E.g. PATH=/sbin:/usr/sbin:/bin:/usr/bin
 #
 class letsencrypt (
   Boolean $configure_epel,
@@ -78,6 +81,7 @@ class letsencrypt (
   $renew_cron_hour                   = fqdn_rand(24),
   $renew_cron_minute                 = fqdn_rand(60, fqdn_rand_string(10)),
   $renew_cron_monthday               = '*',
+  $renew_cron_environment            = undef,
 ) {
   if $manage_install {
     contain letsencrypt::install # lint:ignore:relative_classname_inclusion
